@@ -7,6 +7,14 @@ const ProductCard = ({product, addToCart})=> {
         <div>
             <h3>{product.tittle}</h3>
             <img src={product.image} alt={product.title} width="100" />
+            <p>${product.price}</p>
+            <div>
+                <button onClick={()=> setQuantity(quantity -1)} disabled= {quantity <= 1}>-</button>
+                <input 
+                type="number"
+                value={quantity}
+                onChange={(e)=> {}} />
+            </div>
         </div>
     )
 }
