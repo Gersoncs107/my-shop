@@ -5,18 +5,16 @@ import Shop from "./pages/shop";
 import { CartProvider } from "./context/CartContext";
 
 function App() {
-  return(
+  return (
     <CartProvider>
       <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/shop" element={<Shop/>}/>
-      </Routes>
-    </Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
+      </Router>
     </CartProvider>
-    
-  )
+  );
 }
-
 export default App
