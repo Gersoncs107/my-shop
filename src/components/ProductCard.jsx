@@ -13,7 +13,8 @@ const ProductCard = ({product, addToCart})=> {
                 <input 
                 type="number"
                 value={quantity}
-                onChange={(e)=> {}} />
+                onChange={(e)=>setQuantity(Number(e.target.value))} />
+                <button onClick={()=> setQuantity(quantity + 1)}>+</button>
             </div>
         </div>
     )
