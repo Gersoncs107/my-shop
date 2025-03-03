@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Navbar = ({cartCount})=> { //A prop cartCount exibirá a quantidade de itens no carrinho.
+const Navbar = ()=> { //A prop cartCount exibirá a quantidade de itens no carrinho.
     const { cart } = useCart();
     const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
     return(
