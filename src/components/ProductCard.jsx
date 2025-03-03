@@ -16,6 +16,9 @@ const ProductCard = ({product, addToCart})=> {
                 onChange={(e)=>setQuantity(Number(e.target.value))} />
                 <button onClick={()=> setQuantity(quantity + 1)}>+</button>
             </div>
+            <button onClick={()=> addToCart(product,quantity)}>Add to Cart</button>
         </div>
     )
 }
+
+export default ProductCard
