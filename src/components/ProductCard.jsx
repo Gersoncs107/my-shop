@@ -1,25 +1,51 @@
 import { useState } from "react";
 
-const ProductCard = ({product, addToCart})=> {
+const ProductCard = ({ product, addToCart }) => {
     const [quantity, setQuantity] = useState(1);
-    
-    return(
+
+    const handleDecrease = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    const handleIncrease = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const handleInputChange = (e) => {
+        const value = Math.max(1, Number(e.target.value)); // Ensure quantity is at least 1
+        setQuantity(value);
+    };
+
+    const handleAddToCart = () => {
+        addToCart(product, quantity);
+    };
+
+    return (
         <div>
-            <h3>{product.title}</h3> {/* Fixed typo: changed 'tittle' to 'title' */}
-            <img src={product.image} alt={product.title} width="100" />
+            <h3>{product.title}</h3>
+            <img
+                src={product.image}
+                alt={`Image of ${product.title}`}
+                width="100"
+            />
             <p>${product.price}</p>
             <div>
-                <button onClick={()=> setQuantity(quantity - 1)} disabled={quantity <= 1}>-</button>
-                <input 
+                <button onClick={handleDecrease} disabled={quantity <= 1}>
+                    -
+                </button>
+                <input
                     type="number"
                     value={quantity}
-                    onChange={(e)=>setQuantity(Number(e.target.value))} 
+                    onChange={handleInputChange}
+                    min="1" // Enforce minimum value in the input field
                 />
-                <button onClick={()=> setQuantity(quantity + 1)}>+</button>
+                <button onClick={handleIncrease}>+</button>
             </div>
-            <button onClick={()=> addToCart(product, quantity)}>Add to Cart</button>
+            <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
     );
-}
+};
 
 export default ProductCard;
